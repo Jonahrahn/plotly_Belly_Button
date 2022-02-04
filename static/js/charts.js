@@ -96,7 +96,7 @@ function buildCharts(sample) {
       plot_bgcolor: 'rgba(0,0,0,0)',
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", trace1, barLayout);
+    Plotly.newPlot("cbar", trace1, barLayout);
 
     //Part 2
     // 1. Create the trace for the bubble chart.
@@ -127,9 +127,9 @@ function buildCharts(sample) {
     //Part 3
     // 3. Create a variable that holds the washing frequency.
     var metadata = data.metadata
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
-    washingFrequency = result.wfreq;
+    var resultArray2 = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result2 = resultArray2[0];
+    washingFrequency = result2.wfreq;
 
     // 4. Create the trace for the gauge chart.
     var trace3 = [
@@ -149,7 +149,6 @@ function buildCharts(sample) {
           ],
         }
       }
-    
     ];
     
     // 5. Create the layout for the gauge chart.
