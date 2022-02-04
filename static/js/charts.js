@@ -96,7 +96,7 @@ function buildCharts(sample) {
       plot_bgcolor: 'rgba(0,0,0,0)',
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("cbar", trace1, barLayout);
+    Plotly.newPlot("bar", trace1, barLayout);
 
     //Part 2
     // 1. Create the trace for the bubble chart.
