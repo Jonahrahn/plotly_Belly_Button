@@ -79,7 +79,7 @@ function buildCharts(sample) {
     var yticks = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse();
 
     // 8. Create the trace for the bar chart. 
-    var trace = [
+    var trace1 = [
       {
         y: yticks,
         x: sample_values.slice(0,10).reverse(),
@@ -94,17 +94,13 @@ function buildCharts(sample) {
       margin: { t: 30, l: 150 },
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
-      font: {
-        color: "white",
-        family: "Monospace"
-      }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", trace, barLayout);
+    Plotly.newPlot("bar", trace1, barLayout);
 
-    //DELIVERABLE 2
+    //Part 2
     // 1. Create the trace for the bubble chart.
-    var bubbleData = [{
+    var trace2 = [{
       x: otu_ids,
       y: sample_values,
       text: otu_labels,
@@ -113,7 +109,7 @@ function buildCharts(sample) {
         size: sample_values,
         color: otu_ids,
         colorscale: "Earth"
-    }
+      }
     }];
 
     // 2. Create the layout for the bubble chart.
@@ -123,16 +119,12 @@ function buildCharts(sample) {
       xaxis: { title: "OTU ID" },
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
-      font: {
-        color: "white",
-        family: "Monospace"
-      }
     };
 
     // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+    Plotly.newPlot("bubble", trace2, bubbleLayout);
     
-    //DELIVERABLE 3
+    //Part 3
     // 3. Create a variable that holds the washing frequency.
     var metadata = data.metadata
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -140,7 +132,7 @@ function buildCharts(sample) {
     washingFrequency = result.wfreq;
 
     // 4. Create the trace for the gauge chart.
-    var gaugeData = [
+    var trace3 = [
       {
         domain: { x: [0, 1], y: [0, 1] },
         value: washingFrequency,
@@ -168,13 +160,9 @@ function buildCharts(sample) {
       margin: { t: 0, b: 0 } ,
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
-      font: {
-        color: "white",
-        family: "Monospace"
-      }
     };
 
     // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
+    Plotly.newPlot("gauge", trace3, gaugeLayout);
   });
 };
